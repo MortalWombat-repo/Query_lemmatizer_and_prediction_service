@@ -1,0 +1,12 @@
+# Uncomment if you want other lemmatizers, for our purposes spacy works best
+pandas
+numpy
+scikit-learn
+#nltk
+#stanza
+#classla
+spacy
+langdetect
+fastapi
+pydantic
+uvicorn
