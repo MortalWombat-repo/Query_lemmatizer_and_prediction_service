@@ -38,7 +38,6 @@ This is a prediction service that labels queries based on a lemmatized dataset a
 
 - **RESTful API Deployment**  
   - Built with **FastAPI**
-  - Accepts JSON input
   - Returns predicted class and probabilities
 
 - **Dockerized for Easy Deployment**  
