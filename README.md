@@ -21,7 +21,7 @@ This is a prediction service that labels queries based on a lemmatized dataset a
 - **Multi-Library Lemmatization**  
   Supports and evaluates multiple lemmatizers:
   - **spaCy** (`hr_core_news_md`)
-  - **Classla**
+  - **Classla** (The CLARIN Knowledge Centre for South Slavic languages)
   - **Stanza (StanfordNLP)**
   - **NLTK**
 
