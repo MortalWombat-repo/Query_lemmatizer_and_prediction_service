@@ -109,3 +109,5 @@ curl -X POST http://localhost:8008/predict \
 -H "Content-Type: application/json" \
 -d '{"text": "YOUR_QUERY"}'
 ```
+
+Example query: `Ne mogu se prijaviti na svoj račun.` will be lemmatized as `ne moći sebe prijaviti na svoj račun` for maximum accuracy.
