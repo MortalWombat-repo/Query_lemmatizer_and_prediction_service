@@ -3,6 +3,68 @@
 ## Overview
 This is a prediction service that labels queries based on a lemmatized dataset and is deployable with Docker through FastAPI and uvicorn.
 
+## Features
+
+- **Croatian Text Classification**  
+  Classifies input into categories like:
+  - Password reset
+  - Package price
+  - Login issues
+  - Other
+
+- **Text Preprocessing**  
+  Removes punctuation, converts to lowercase, and filters Croatian stopwords.
+
+- **Language Detection**  
+  Automatically verifies the text is in Croatian using `langdetect`.
+
+- **Multi-Library Lemmatization**  
+  Supports and evaluates multiple lemmatizers:
+  - **spaCy** (`hr_core_news_md`)
+  - **Classla**
+  - **Stanza (StanfordNLP)**
+  - **NLTK**
+
+- **Machine Learning Model Training**  
+  - TF-IDF Vectorization
+  - Logistic Regression Classifier
+  - Supervised learning on labeled query dataset
+
+- **Model Evaluation**  
+  - Accuracy
+  - Precision
+  - Recall
+  - F1-Score
+
+- **RESTful API Deployment**  
+  - Built with **FastAPI**
+  - Accepts JSON input
+  - Returns predicted class and probabilities
+
+- **Dockerized for Easy Deployment**  
+  Easily containerized and deployable using Docker.
+
+---
+
+## Technologies Used
+
+| Technology      | Purpose                                                                 |
+|-----------------|-------------------------------------------------------------------------|
+| **Python**      | Core programming language                                               |
+| **Pandas**      | Data manipulation and analysis                                          |
+| **Scikit-learn**| Machine learning model training, evaluation, and vectorization          |
+| **spaCy**       | Lemmatization (API uses `hr_core_news_md`)                             |
+| **Classla**     | Advanced NLP for Croatian (tokenization, tagging, lemmatization)        |
+| **Stanza**      | Stanford NLP library for lemmatization and tagging                      |
+| **NLTK**        | Basic NLP tools, used for lemmatization comparison                      |
+| **langdetect**  | Detects language to ensure only Croatian is processed                   |
+| **pickle**      | Model serialization for saving/loading                                  |
+| **re, string, os** | Text cleaning and preprocessing                                     |
+| **FastAPI**     | RESTful API backend for real-time predictions                           |
+| **Docker**      | Containerized deployment for consistency across environments            |
+| **requests**    | Python client for API communication (example in `post_request.py`)      |
+
+
 ## Usage
 Important!
 
