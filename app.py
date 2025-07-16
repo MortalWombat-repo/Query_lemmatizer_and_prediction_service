@@ -25,7 +25,6 @@ def parse_prediction_output(result_str: str):
 
     return input_text, class_probs, predicted_class
 
-
 def main():
     st.title("Query Classification Service")
 
