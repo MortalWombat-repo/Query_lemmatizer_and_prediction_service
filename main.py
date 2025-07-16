@@ -1,29 +1,29 @@
 import pickle
 import spacy
 import string
-import sys
-from langdetect import detect, DetectorFactory, LangDetectException
-DetectorFactory.seed = 0
+#import sys
+#from langdetect import detect, DetectorFactory, LangDetectException
+#DetectorFactory.seed = 0
+from lingua import Language, LanguageDetectorBuilder
+languages = [Language.CROATIAN, Language.BOSNIAN, Language.SERBIAN]
+detector = LanguageDetectorBuilder.from_languages(*languages).build()
 
 def prediction(text: str) -> str:
     if not isinstance(text, str):
         raise TypeError("Input must be a string.")
 
     if text == '':
-        print("You did not enter anything.")
-        sys.exit()
+        raise ValueError("You did not enter anything.")
 
     try:
-        lang = detect(text)
+        lang = detector.detect_language_of(text)
+        print(f"The language is in {lang.name}")
+    except Exception as e:
+        raise ValueError(f"Could not detect language. Error: {e}") from e
 
-        if lang != "hr":
-            print("The text does not appear to be in Croatian.")
-            sys.exit()
-
-    except LangDetectException as e:
-        print("Could not detect language. Please revise your input.")
-        print(f"Error: {e}")
-        sys.exit()
+    allowed = {Language.CROATIAN, Language.SERBIAN, Language.BOSNIAN}
+    if lang not in allowed:
+        return f"The text appears to be in {lang.name.capitalize()}, not Croatian, Serbian or Bosnian."
 
     # translation table that maps punctuation to None
     translator = str.maketrans('', '', string.punctuation)
@@ -60,7 +60,7 @@ def prediction(text: str) -> str:
     return "\n".join(output)
 
 def main():
-    text = "Ne mogu se prijaviti na svoj račun."
+    text = "Zapošljavate li nove radnike?"
     print(prediction(text))
 
 if __name__ == "__main__":

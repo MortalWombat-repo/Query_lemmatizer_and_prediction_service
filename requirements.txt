@@ -10,3 +10,4 @@ langdetect
 fastapi
 pydantic
 uvicorn
+lingua-language-detector
