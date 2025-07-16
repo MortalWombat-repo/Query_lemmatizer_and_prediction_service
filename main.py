@@ -8,6 +8,13 @@ from lingua import Language, LanguageDetectorBuilder
 languages = [Language.CROATIAN, Language.BOSNIAN, Language.SERBIAN]
 detector = LanguageDetectorBuilder.from_languages(*languages).build()
 
+def load_spacy_model(name):
+    try:
+        return spacy.load(name)
+    except OSError:
+        spacy.cli.download(name)
+        return spacy.load(name)
+
 def prediction(text: str) -> str:
     if not isinstance(text, str):
         raise TypeError("Input must be a string.")
@@ -29,7 +36,7 @@ def prediction(text: str) -> str:
     translator = str.maketrans('', '', string.punctuation)
     text = text.translate(translator)
 
-    nlp = spacy.load("hr_core_news_md")
+    nlp = load_spacy_model("hr_core_news_md")
 
     def spacy_lemmatize_hr(text):
         doc = nlp(text)
@@ -38,7 +45,6 @@ def prediction(text: str) -> str:
     # Load the model from the file
     with open('spacy_model.bin', 'rb') as f:
         model = pickle.load(f)
-
 
     lemmatized_text = spacy_lemmatize_hr(text)
 
