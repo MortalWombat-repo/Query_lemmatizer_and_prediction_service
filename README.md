@@ -1,5 +1,7 @@
 # Query_lemmatizer_and_prediction_service
 
+https://query-lemmatizer-and-prediction-service.streamlit.app/
+
 ## Overview
 This is a prediction service that labels queries based on a lemmatized dataset and is deployable with Docker through FastAPI and uvicorn.
 
