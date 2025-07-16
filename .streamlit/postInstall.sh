@@ -1,1 +1,2 @@
-python -m spacy download hr_core_news_md
+#!/bin/bash
+python3 -m spacy download hr_core_news_md
